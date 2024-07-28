@@ -46,6 +46,64 @@ app.get('/locationsByName', async (req, res) => {
 });
 
 
+//사용자의 찜목록 조회
+// 사용자의 찜목록 조회
+app.get('/scraps/:email', async (req, res) => {
+    const { email } = req.params;
+
+    try {
+        const scraps = await prisma.scrap.findMany({
+            where: { scrapperId: email },
+            include: { scrapPlace: true }, // 장소 정보 포함
+        });
+
+        res.send(scraps);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'An error occurred while retrieving scraps' });
+    }
+});
+
+
+//특정 사용자 찜추가
+app.post('/scraps/:email', async (req, res) => {
+    const { email } = req.params;
+    const { locationId } = req.body;
+
+    try {
+        // 해당 사용자가 이미 이 장소를 찜했는지 확인
+        const existingScrap = await prisma.scrap.findUnique({
+            where: {
+                scrapperId_scrapPlaceId: {
+                    scrapperId: email,
+                    scrapPlaceId: locationId,
+                },
+            },
+        });
+
+        if (existingScrap) {
+            // 이미 찜한 장소라면 해당 사실을 반환
+            return res.status(200).send({ message: 'This location is already in your scrap list.' });
+        }
+
+        // 찜하지 않은 장소라면 새로 추가
+        const newScrap = await prisma.scrap.create({
+            data: {
+                scrapper: { connect: { email } },
+                scrapPlace: { connect: { id: locationId } },
+            },
+        });
+
+        res.status(201).send(newScrap);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'An error occurred while adding the scrap' });
+    }
+});
+
+
+
+
 //사용자의 일정 조회
 app.get('/events/:email', async (req, res) => {
     const { email } = req.params;

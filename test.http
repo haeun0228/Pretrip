@@ -6,6 +6,18 @@ GET http://localhost:3000/locations
 GET http://localhost:3000/locationsByName?name=Location 1
 
 
+###특정 사용자의 찜목록 조회하기
+GET http://localhost:3000/scraps/user1@example.com
+
+
+###특정 사용자가 찜 추가하기
+POST http://localhost:3000/scraps/user1@example.com
+Content-Type: application/json
+
+{
+    "locationId": "0188fc65-283b-4ca1-bb8d-d2824a171c45"
+}
+
 ###특정 사용자의 일정조회하기
 GET http://localhost:3000/events/user1@example.com
 

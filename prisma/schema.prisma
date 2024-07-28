@@ -41,6 +41,8 @@ model Scrap{
   createdAt     DateTime @default(now())
   scrapper      User     @relation(fields: [scrapperId], references: [email])
   scrapPlace    Location  @relation(fields: [scrapPlaceId], references: [id])
+
+  @@unique([scrapperId, scrapPlaceId])
 }
 
 model Event{
