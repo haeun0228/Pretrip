@@ -36,10 +36,14 @@ Content-Type: application/json
 
 {
     "eventCreatorId": "user1@example.com",
-    "eventDate": "2024-08-15T10:00:00Z",
+    "eventDate": "2024-08-16T10:00:00Z",
     "locationId": "0188fc65-283b-4ca1-bb8d-d2824a171c45"
 }
 
 
 ###특정 장소 사용자의 일정에서 삭제하기
-DELETE http://localhost:3000/events/586e1b3d-7910-4515-866c-4ae9556130ba/location/0188fc65-283b-4ca1-bb8d-d2824a171c45
+DELETE http://localhost:3000/events/d95a47d9-9692-419b-99a5-b972c0ee5e19/location/0188fc65-283b-4ca1-bb8d-d2824a171c45
+
+
+###특정 사용자의 특정 일정을 삭제하기
+DELETE http://localhost:3000/events/date/2024-08-15

@@ -222,7 +222,7 @@ app.post('/events', async (req, res) => {
 });
 
 
-
+//특정사용자가 일정에서 한개의 장소만 삭제하는 경우
 app.delete('/events/:eventId/location/:locationId', async (req, res) => {
     const { eventId, locationId } = req.params;
 
@@ -253,6 +253,35 @@ app.delete('/events/:eventId/location/:locationId', async (req, res) => {
     }
 });
 
+
+//해당날짜의 일정 자체를 삭제
+app.delete('/events/date/:eventDate', async (req, res) => {
+    const { eventDate } = req.params;
+
+    try {
+        // 날짜 형식을 처리하기 위해 파싱 (예: '2024-08-15')
+        const date = new Date(eventDate);
+
+        // 날짜 범위를 설정 (해당 날짜의 시작과 끝)
+        const startOfDay = new Date(date.setHours(0, 0, 0, 0));
+        const endOfDay = new Date(date.setHours(23, 59, 59, 999));
+
+        // 해당 날짜의 모든 일정을 삭제
+        await prisma.event.deleteMany({
+            where: {
+                eventDate: {
+                    gte: startOfDay,
+                    lte: endOfDay,
+                },
+            },
+        });
+
+        res.status(200).send({ message: 'All events on the specified date have been deleted successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'An error occurred while deleting events' });
+    }
+});
 
 
 app.listen(port, () => {

@@ -49,7 +49,7 @@ model Event{
   id            String   @id @default(uuid())
   eventCreatorId String
   eventDate     DateTime 
-  creator       User     @relation(fields: [eventCreatorId], references: [email])
+  creator       User     @relation(fields: [eventCreatorId], references: [email], onDelete: Cascade)
   locations     EventLocation[]
 }
 
@@ -57,7 +57,7 @@ model EventLocation {
   id        String   @id @default(uuid())
   eventId   String
   locationId String
-  event     Event     @relation(fields: [eventId], references: [id])
+  event     Event     @relation(fields: [eventId], references: [id], onDelete: Cascade)
   location  Location  @relation(fields: [locationId], references: [id])
 }
 
