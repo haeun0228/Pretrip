@@ -47,7 +47,6 @@ app.get('/locationsByName', async (req, res) => {
 
 
 //사용자의 찜목록 조회
-// 사용자의 찜목록 조회
 app.get('/scraps/:email', async (req, res) => {
     const { email } = req.params;
 
@@ -102,6 +101,42 @@ app.post('/scraps/:email', async (req, res) => {
 });
 
 
+//사용자의 찜목록에서 특정 장소 삭제
+app.delete('/scraps/:email', async (req, res) => {
+    const { email } = req.params;
+    const { locationId } = req.body;
+
+    try{
+        //해당 장소가 찜목록에 존재하는 지 확인
+        const existingScrap = await prisma.scrap.findUnique({
+            where: {
+                scrapperId_scrapPlaceId: {
+                    scrapperId: email,
+                    scrapPlaceId: locationId,
+                },
+            },
+        });
+
+        if(!existingScrap){
+            //이미 찜목록에 존재하지 않는다면 해당 사실 반환
+            return res.status(200).send({ message: 'This location is already not in the scrap' });
+        }
+        //존재한다면 삭제 수행
+        await prisma.scrap.delete({
+            where: {
+                scrapperId_scrapPlaceId: {
+                    scrapperId: email,
+                    scrapPlaceId: locationId,
+                },
+            },
+        });
+
+        res.status(200).send({ message: 'Location removed from scrap successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'An error occurred while deleting the scrap' });
+    }
+});
 
 
 //사용자의 일정 조회
@@ -185,6 +220,39 @@ app.post('/events', async (req, res) => {
         res.status(500).send({ error: 'An error occurred while processing the event' });
     }
 });
+
+
+
+app.delete('/events/:eventId/location/:locationId', async (req, res) => {
+    const { eventId, locationId } = req.params;
+
+    try {
+        // 해당 이벤트와 장소 관계를 찾기
+        const eventLocation = await prisma.eventLocation.findFirst({
+            where: {
+                eventId: eventId,
+                locationId: locationId,
+            },
+        });
+
+        if (!eventLocation) {
+            return res.status(404).send({ message: 'Event location not found' });
+        }
+
+        // 해당 관계의 ID를 사용하여 삭제
+        await prisma.eventLocation.delete({
+            where: {
+                id: eventLocation.id,  // ID를 사용하여 삭제
+            },
+        });
+
+        res.status(200).send({ message: 'Location removed from event successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'An error occurred while removing the location from the event' });
+    }
+});
+
 
 
 app.listen(port, () => {

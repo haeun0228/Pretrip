@@ -18,6 +18,14 @@ Content-Type: application/json
     "locationId": "0188fc65-283b-4ca1-bb8d-d2824a171c45"
 }
 
+###특정 사용자가 찜 삭제하기
+DELETE http://localhost:3000/scraps/user1@example.com
+Content-Type: application/json
+
+{
+    "locationId": "0188fc65-283b-4ca1-bb8d-d2824a171c45"
+}
+
 ###특정 사용자의 일정조회하기
 GET http://localhost:3000/events/user1@example.com
 
@@ -31,3 +39,7 @@ Content-Type: application/json
     "eventDate": "2024-08-15T10:00:00Z",
     "locationId": "0188fc65-283b-4ca1-bb8d-d2824a171c45"
 }
+
+
+###특정 장소 사용자의 일정에서 삭제하기
+DELETE http://localhost:3000/events/586e1b3d-7910-4515-866c-4ae9556130ba/location/0188fc65-283b-4ca1-bb8d-d2824a171c45
