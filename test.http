@@ -1,0 +1,21 @@
+###전체 장소목록 확인하기
+GET http://localhost:3000/locations
+
+
+###이름으로 장소검색하기
+GET http://localhost:3000/locationsByName?name=Location 1
+
+
+###특정 사용자의 일정조회하기
+GET http://localhost:3000/events/user1@example.com
+
+
+###특정 장소를 사용자의 일정에 추가하기
+POST http://localhost:3000/events
+Content-Type: application/json
+
+{
+    "eventCreatorId": "user1@example.com",
+    "eventDate": "2024-08-15T10:00:00Z",
+    "locationId": "0188fc65-283b-4ca1-bb8d-d2824a171c45"
+}
