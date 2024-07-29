@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../static/detail.css">
+        <script src="../components/rating.js"></script>
+        <script src="../components/scrap.js"></script>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=19283dede40ba3fbe3160877cfa10827"></script>
+        <script>
+            var container = document.getElementById('map');
+            var options = {
+                center: new kakao.maps.LatLng(33.450701, 126.570667),
+                level: 3
+            };
+            var map = new kakao.maps.Map(container, options);
+        </script>
+    </head>
+    <body>
+
+        <nav class="navbar">
+            <ul class="navlink">
+                <li><a href="index.html">Main</a></li>
+                <li><a href="spot.html">Spot</a></li>
+                <li><a href="calender.html">Calender</a></li>
+            </ul>
+        </nav>
+
+        <div class="content" id="content">
+            <div class="spotsection">
+                <img class="spotimage" src="../static/image/gyungbok.jpeg" width="45%">
+                <div class="spotinfo">
+                    <div class="name">장소명</div>
+                    <div class="type">지역/유형</div>
+                    <div class="description">설명</div>
+                    <button id="bookmark-button" class="bookmark-button" style="color:#FFFFFF">스크랩</button>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="mapsection">
+                <div class="map" id="map" style="width:500px;height:400px;"></div>
+            </div>
+        </div>
+
+        <div class="reviewsection">
+            <div class="review">
+                <div class="sentence">"리뷰"</div>
+                <div class="rating">★★★★★</div>
+                <div class="reviewerinfo">
+                    <div class="profile"></div>
+                    <div class="reviewername"></div>
+                    <div class="reviewerid"></div>
+                </div>
+            </div>
+            <div class="review">
+                <div class="sentence">"리뷰2"</div>
+                <div class="rating">★★★★★</div>
+                <div class="reviewerinfo">
+                    <div class="profile"></div>
+                    <div class="reviewername"></div>
+                    <div class="reviewerid"></div>
+                </div>
+            </div>
+            <div class="review">
+                <div class="sentence">"리뷰3"</div>
+                <div class="rating">★★★★★</div>
+                <div class="reviewerinfo">
+                    <div class="profile"></div>
+                    <div class="reviewername"></div>
+                    <div class="reviewerid"></div>
+                </div>
+            </div>
+
+            <div class="reviewsubmitsection">
+                <div class="starrating">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+                <label for="review-input">리뷰 등록</label>
+                <div class="submitsection">
+                    <input type="text" id="reviewinput" class="reviewinput" placeholder="리뷰를 입력하세요">
+                    <button id="submitreview" class="submit">등록</button>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
