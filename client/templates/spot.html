@@ -5,21 +5,48 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../static/spot.css">
+        <link href="../static/Nav.css" rel="stylesheet" />
+        <link href="../static/Footer.css" rel="stylesheet" />
+         <!--폰트-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=M+PLUS+1p&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=M+PLUS+1p&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&family=Prosto+One&display=swap"
+      rel="stylesheet"
+    />
+            <!--스크립트-->
+    <!--네비게이션 바-->
+    <script src="../components/navbar.js"></script>
     </head>
 
     <body>
         <script src="../components/pagination.js"></script>
-
-        <main class="spot_page">
-
         <nav class="navbar">
-            <ul class="navlink">
-                <li><a href="index.html">Main</a></li>
-                <li><a href="spot.html" style="color: #1E90FF;">Spot</a></li>
-                <li><a href="calender.html">Calender</a></li>
-            </ul>
+          <a id="pretrip" href="./index.html">PreTrip</a>
+          <ul class="nav-menu mainFunc">
+            <li><a href="./spot.html">Spot</a></li>
+            <li>
+              <a href="./calendar.html">Calendar</a>
+            </li>
+          </ul>
+          <ul class="nav-menu">
+            <li><a href="./login.html">Login</a></li>
+            <li class="division">|</li>
+            <li><a href="./login.html">Sign Up</a></li>
+          </ul>
+          <a class="nav-toggle" href="javascript:void(0)">
+            <i class="fa-solid fa-bars"></i>
+          </a>
         </nav>
-
+        <main class="spot_page">
         <div class="toolbar">
             <div class="selection">
                 <select class="location" id="location">
