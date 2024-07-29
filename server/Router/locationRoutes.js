@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { PrismaClient } from '@prisma/client';
 //import { assert } from 'superstruct';
 import { validateReview, validateReviewUpdate } from './structs.js';
+import { protect } from '../middleware/authMiddleware.js';
 
 dotenv.config();
 
@@ -27,7 +28,7 @@ function asyncHandler(handler) {
 }
 
 // id에 해당하는 장소 조회
-location.get('/detail/:id/',asyncHandler(async (req, res) => {
+location.get('/detail/:id/', asyncHandler(async (req, res) => {
     const { id } = req.params;
     const location = await prisma.location.findUnique({
       where: { id: Number(id) },
@@ -41,7 +42,7 @@ location.get('/detail/:id/',asyncHandler(async (req, res) => {
     }
   }));
   
-  location.post('/detail/:id/reviews',asyncHandler(async (req, res) => {
+  location.post('/detail/:id/reviews', protect, asyncHandler(async (req, res) => {
     // 리퀘스트 바디 내용으로 리뷰 생성
     //assert(req.body, CreateReview);
     validateReview(req.body);
@@ -85,7 +86,7 @@ location.get('/detail/:id/',asyncHandler(async (req, res) => {
   };
   
   //리뷰 수정 
-  location.patch('/detail/:id/reviews/:reviewId', asyncHandler(async (req, res) => {
+  location.patch('/detail/:id/reviews/:reviewId', protect, asyncHandler(async (req, res) => {
     validateReviewUpdate(req.body);
     const { reviewId } = req.params;
     const { userId, rating, comment } = req.body;
@@ -101,7 +102,7 @@ location.get('/detail/:id/',asyncHandler(async (req, res) => {
   }));
   
   //리뷰 삭제 
-  location.delete('/detail/:id/reviews/:reviewId', asyncHandler(async (req, res) => {
+  location.delete('/detail/:id/reviews/:reviewId', protect, asyncHandler(async (req, res) => {
     const { reviewId } = req.params;
       await prisma.review.delete({
           where: {id: Number(reviewId)},
