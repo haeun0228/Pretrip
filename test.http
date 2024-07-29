@@ -15,7 +15,7 @@ POST http://localhost:3000/scraps/user1@example.com
 Content-Type: application/json
 
 {
-    "locationId": "0188fc65-283b-4ca1-bb8d-d2824a171c45"
+    "locationId": "445bda27-260c-4afd-bb87-adea403773cd"
 }
 
 ###특정 사용자가 찜 삭제하기
@@ -23,7 +23,7 @@ DELETE http://localhost:3000/scraps/user1@example.com
 Content-Type: application/json
 
 {
-    "locationId": "0188fc65-283b-4ca1-bb8d-d2824a171c45"
+    "locationId": "445bda27-260c-4afd-bb87-adea403773cd"
 }
 
 ###특정 사용자의 일정조회하기
@@ -37,7 +37,7 @@ Content-Type: application/json
 {
     "eventCreatorId": "user1@example.com",
     "eventDate": "2024-08-16T10:00:00Z",
-    "locationId": "0188fc65-283b-4ca1-bb8d-d2824a171c45"
+    "locationId": "445bda27-260c-4afd-bb87-adea403773cd"
 }
 
 
@@ -51,3 +51,7 @@ DELETE http://localhost:3000/events/date/2024-08-15
 
 ###카카오 로그인
 GET http://localhost:3000/auth/kakao
+
+
+### 특정 사용자가 장소 검색함
+GET http://localhost:3000/locationsByName/445bda27-260c-4afd-bb87-adea403773cd
