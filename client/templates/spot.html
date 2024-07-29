@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Spot</title>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../static/spot.css">
     </head>
+
     <body>
+        <script src="../components/pagination.js"></script>
+
+        <main class="spot_page">
 
         <nav class="navbar">
             <ul class="navlink">
                 <li><a href="index.html">Main</a></li>
-                <li><a href="spot.html">Spot</a></li>
+                <li><a href="spot.html" style="color: #1E90FF;">Spot</a></li>
                 <li><a href="calender.html">Calender</a></li>
             </ul>
         </nav>
@@ -32,37 +38,97 @@
                 </select>
             </div>
             <div class="searcharea">
-                <input type="text" class="search" id="search" placeholder="검색">
+                <input type="text" class="search" id="search" placeholder="   검색">
             </div>
         </div>
 
         <div class="content">
             <div class="spotlist">
                 <div class="leftlist">
-                    <div class="spot">장소1</div>
-                    <div class="spot">장소2</div>
-                    <div class="spot">장소3</div>
-                    <div class="spot">장소4</div>
+                    <div class="spot" onclick="window.location.href='detail.html';">
+                        <div class="spotinfo">
+                            <div class="name">경복궁</div>
+                            <div class="type">서울/관광지</div>
+                            <div class="rate">★★★★☆</div>
+                        </div>
+                        <img src="../static/image/gyungbok.jpeg" class="thumbnail">
+                    </div>
+                    <div class="spot" onclick="window.location.href='detail.html';">
+                        <div class="spotinfo">
+                            <div class="name">경복궁</div>
+                            <div class="type">서울/관광지</div>
+                            <div class="rate">★★★★☆</div>
+                        </div>
+                        <img src="../static/image/gyungbok.jpeg" class="thumbnail">
+                    </div>
+                    <div class="spot" onclick="window.location.href='detail.html';">
+                        <div class="spotinfo">
+                            <div class="name">경복궁</div>
+                            <div class="type">서울/관광지</div>
+                            <div class="rate">★★★★☆</div>
+                        </div>
+                        <img src="../static/image/gyungbok.jpeg" class="thumbnail">
+                    </div>
+                    <div class="spot" onclick="window.location.href='detail.html';">
+                        <div class="spotinfo">
+                            <div class="name">경복궁</div>
+                            <div class="type">서울/관광지</div>
+                            <div class="rate">★★★★☆</div>
+                        </div>
+                        <img src="../static/image/gyungbok.jpeg" class="thumbnail">
+                    </div>
                 </div>
                 <div class="divider"></div>
-                <div class="rightlist">
-                    <div class="spot">장소1</div>
-                    <div class="spot">장소2</div>
-                    <div class="spot">장소3</div>
-                    <div class="spot">장소4</div>
+                <div class="leftlist">
+                    <div class="spot" onclick="window.location.href='detail.html';">
+                        <div class="spotinfo">
+                            <div class="name">경복궁</div>
+                            <div class="type">서울/관광지</div>
+                            <div class="rate">★★★★☆</div>
+                        </div>
+                        <img src="../static/image/gyungbok.jpeg" class="thumbnail">
+                    </div>
+                    <div class="spot" onclick="window.location.href='detail.html';">
+                        <div class="spotinfo">
+                            <div class="name">경복궁</div>
+                            <div class="type">서울/관광지</div>
+                            <div class="rate">★★★★☆</div>
+                        </div>
+                        <img src="../static/image/gyungbok.jpeg" class="thumbnail">
+                    </div>
+                    <div class="spot" onclick="window.location.href='detail.html';">
+                        <div class="spotinfo">
+                            <div class="name">경복궁</div>
+                            <div class="type">서울/관광지</div>
+                            <div class="rate">★★★★☆</div>
+                        </div>
+                        <img src="../static/image/gyungbok.jpeg" class="thumbnail">
+                    </div>
+                    <div class="spot" onclick="window.location.href='detail.html';">
+                        <div class="spotinfo">
+                            <div class="name">경복궁</div>
+                            <div class="type">서울/관광지</div>
+                            <div class="rate">★★★★☆</div>
+                        </div>
+                        <img src="../static/image/gyungbok.jpeg" class="thumbnail">
+                    </div>
+                    
+                    
                 </div>
             </div>
         </div>
 
         <div class="pagination">
-            <a href="#">&ltri;</a>
-            <a href="#" class="active">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">&rtri;</a>
+            <a href="#" class="prev">&ltri;</a>
+            <a href="#" class="page active" data-page="1">1</a>
+            <a href="#" class="page" data-page="2">2</a>
+            <a href="#" class="page" data-page="3">3</a>
+            <a href="#" class="page" data-page="4">4</a>
+            <a href="#" class="page" data-page="5">5</a>    
+            <a href="#" class="next">&rtri;</a>
         </div>
+
+        </main>
 
     </body>
 </html>

@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="../static/detail.css">
+        <script src="../components/rating.js"></script>
+        <script src="../components/scrap.js"></script>
     </head>
     <body>
 
@@ -21,6 +23,7 @@
                     <div class="name">장소명</div>
                     <div class="type">지역/유형</div>
                     <div class="description">설명</div>
+                    <button id="bookmark-button" class="bookmark-button" style="color: #FFFFFF;">스크랩</button>
                 </div>
             </div>
             <div class="divider"></div>
@@ -60,16 +63,16 @@
 
             <div class="reviewsubmitsection">
                 <div class="starrating">
-                    <span class="star" data-value="5">★</span>
-                    <span class="star" data-value="4">★</span>
-                    <span class="star" data-value="3">★</span>
-                    <span class="star" data-value="2">★</span>
                     <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
                 </div>
                 <label for="review-input">리뷰 등록</label>
                 <div class="submitsection">
-                    <input type="text" id="review-input" class="reviewinput">
-                    <button id="submit-review" class="submit">등록</button>
+                    <input type="text" id="reviewinput" class="reviewinput" placeholder="리뷰를 입력하세요">
+                    <button id="submitreview" class="submit">등록</button>
                 </div>
             </div>
         </div>

@@ -53,6 +53,7 @@ body, html{
     justify-content:flex-start;
     margin-left: 20px;
     margin-top: 20px;
+    position: relative;
 }
 .name{
     margin-bottom: 10px;
@@ -63,6 +64,18 @@ body, html{
 }
 .type{
     margin-bottom: 30px;
+}
+.bookmark-button {
+    background-color: #1034A6;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    position: absolute; /* 버튼을 오른쪽 하단에 배치하기 위해 절대 위치 지정 */
+    bottom: 60px;
+    right: 20px;
+    transition: background-color 0.3s;
 }
 .mapsection{
     width: 45%;
@@ -116,7 +129,12 @@ body, html{
 }
 .star {
     font-size: 2em;
+    color: #FFFFFF; /* 기본 별색 */
+    transition: color 0.3s;
     cursor: pointer;
+}
+.star.active {
+    color: #000000; /* 활성화된 별색 */
 }
 .submitsection {
     width: 100%;
