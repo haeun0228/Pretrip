@@ -79,18 +79,23 @@ html {
   padding: 40px;
   padding-top: 0;
 }
-.review {
-  width: 92%;
-  height: 20%;
-  border-radius: 12px;
-  background-color: #ffffff;
-  margin-bottom: 30px;
+.review{
+    width:92%;
+    height: 20%;
+    border-radius: 12px;
+    background-color: #FFFFFF;
+    margin-bottom: 60px;
 }
 .sentence {
   margin: 30px;
 }
 .rating {
   margin: 30px;
+}
+.reviewerinfo{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .reviewsubmitsection {
