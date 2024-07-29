@@ -66,7 +66,7 @@
                     <div class="spot" onclick="window.location.href='{{ url_for('detail', id=spot.id) }}';">
                         <div class="spotinfo">
                             <div class="name">{{ spot.name }}</div>
-                            <div class="type">{{ spot.location }}/관광지</div>
+                            <div class="type">{{ spot.location }}   {{spot.type}}</div>
                             <div class="rate">★★★★☆</div>
                         </div>
                         <img src="../static/image/gyungbok.jpeg" class="thumbnail">

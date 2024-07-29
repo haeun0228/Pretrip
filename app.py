@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
+import os
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__, template_folder='client/templates', static_folder='client/static')
@@ -38,6 +39,10 @@ def detail(id):
     reviews = Review.query.filter_by(spot_id=id).all()
     return render_template('detail.html', spot=spot, reviews=reviews)
 
+@app.route('/components/<path:filename>')
+def serve_component(filename):
+    return send_from_directory(os.path.join('client', 'components'), filename)
+
 @app.route('/add_review', methods=['POST'])
 def add_review():
     data = request.get_json()
@@ -58,7 +63,6 @@ def add_review():
     db.session.commit()
 
     return jsonify({'success': True})
-
 
 if __name__ == '__main__':
     app.run(debug=True)
