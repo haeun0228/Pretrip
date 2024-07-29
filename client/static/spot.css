@@ -1,5 +1,8 @@
 body,
 html {
+  font-family: "M PLUS 1p", "IBM Plex Sans", sans-serif;
+  font-weight: 300;
+  font-style: normal;
   margin: 0;
   padding: 0;
   font-family: "M PLUS 1p", "IBM Plex Sans", sans-serif;
@@ -60,59 +63,57 @@ html {
   justify-content: center;
   margin-right: 50px;
 }
-.selecttype{
-    width:100px;
-    margin-left:15px;
-    text-align: center;
-    border-radius:8px;
+.selecttype {
+  width: 100px;
+  margin-left: 15px;
+  text-align: center;
+  border-radius: 8px;
 }
-.filter{
-    width:100px;
-    margin-left: 15px;
-    text-align:center;
-    border-radius:8px;
-
+.filter {
+  width: 100px;
+  margin-left: 15px;
+  text-align: center;
+  border-radius: 8px;
 }
-.searcharea{
-    display:flex;
-    margin-left:auto;
-    margin-right:30px;
+.searcharea {
+  display: flex;
+  margin-left: auto;
+  margin-right: 30px;
 }
-.searcharea input{
-    width:200px;
-    height:25px;
-    border-radius: 30px;
-
+.searcharea input {
+  width: 200px;
+  height: 25px;
+  border-radius: 30px;
 }
 
-.content{
-    display: flex;
-    background-color: #FFFFFF;
-    margin-top:30px;
-    padding:20px;
-    align-items: center;
-    justify-content:space-between;
+.content {
+  display: flex;
+  background-color: #ffffff;
+  margin-top: 30px;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
 }
-.spotlist{
-    width:100%;
-    display: flex;
-    justify-content: center;
+.spotlist {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
-.leftlist{
-    width:45%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-right: 60px;
+.leftlist {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 60px;
 }
-.rightlist{
-    width:45%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-left:20px;
+.rightlist {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
 }
 .spot {
   display: grid;
