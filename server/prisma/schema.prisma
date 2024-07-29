@@ -13,67 +13,69 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  kakaoId  String  @id @default(uuid())
-  password String
-  email    String  @unique
-  nickname String
-  scraps   Scrap[]
-  events   Event[]
+model User{
+  kakaoId    String   @id  @default(uuid())
+  password   String   
+  email      String   @unique
+  nickname   String
+  scraps     Scrap[]
+  events     Event[]
+  history    History[]
 }
 
-model Location {
-  id        String          @id @default(uuid())
+
+model Location{
+  id        String    @id  @default(uuid())
   name      String
   category  Category
-  region    String //~시에 속하는지
-  longitude Float
+  region    String              //~시에 속하는지
+  longitude  Float
   latitude  Float
   scraps    Scrap[]
   events    EventLocation[]
-
-  reviews Review[] @relation("LocationReviews")
+  history   History[]
 }
 
-model Review {
-  id         Int      @id @default(autoincrement())
-  locationId String
-  userName   String
-  rating     Int //@check(rating >= 1 && rating <= 5)
-  comment    String?
-  createdAt  DateTime @default(now())
-
-  location Location @relation("LocationReviews", fields: [locationId], references: [id])
-}
-
-model Scrap {
-  id           String   @id @default(uuid())
-  scrapperId   String
-  scrapPlaceId String
-  createdAt    DateTime @default(now())
-  scrapper     User     @relation(fields: [scrapperId], references: [email])
-  scrapPlace   Location @relation(fields: [scrapPlaceId], references: [id])
+model Scrap{
+  id            String    @id   @default(uuid())
+  scrapperId    String
+  scrapPlaceId  String
+  createdAt     DateTime @default(now())
+  scrapper      User     @relation(fields: [scrapperId], references: [email])
+  scrapPlace    Location  @relation(fields: [scrapPlaceId], references: [id])
 
   @@unique([scrapperId, scrapPlaceId])
 }
 
-model Event {
-  id             String          @id @default(uuid())
+model Event{
+  id            String   @id @default(uuid())
   eventCreatorId String
-  eventDate      DateTime
-  creator        User            @relation(fields: [eventCreatorId], references: [email], onDelete: Cascade)
-  locations      EventLocation[]
+  eventDate     DateTime 
+  creator       User     @relation(fields: [eventCreatorId], references: [email], onDelete: Cascade)
+  locations     EventLocation[]
 }
 
 model EventLocation {
-  id         String   @id @default(uuid())
-  eventId    String
+  id        String   @id @default(uuid())
+  eventId   String
   locationId String
-  event      Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
-  location   Location @relation(fields: [locationId], references: [id])
+  event     Event     @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  location  Location  @relation(fields: [locationId], references: [id])
 }
 
-enum Category {
+model History {
+  id          String    @id @default(uuid())
+  userId      String
+  locationId  String
+  searchedAt  DateTime  @default(now())
+  user        User      @relation(fields: [userId], references: [email])
+  location    Location  @relation(fields: [locationId], references: [id])
+
+  @@unique([userId, locationId, searchedAt]) // Optional: ensures unique entries per timestamp
+}
+
+
+enum Category{
   TOUR
   FOOD
   SLEEP
