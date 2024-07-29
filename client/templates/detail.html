@@ -5,6 +5,15 @@
         <link rel="stylesheet" href="../static/detail.css">
         <script src="../components/rating.js"></script>
         <script src="../components/scrap.js"></script>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=19283dede40ba3fbe3160877cfa10827"></script>
+        <script>
+            var container = document.getElementById('map');
+            var options = {
+                center: new kakao.maps.LatLng(33.450701, 126.570667),
+                level: 3
+            };
+            var map = new kakao.maps.Map(container, options);
+        </script>
     </head>
     <body>
 
@@ -23,12 +32,12 @@
                     <div class="name">장소명</div>
                     <div class="type">지역/유형</div>
                     <div class="description">설명</div>
-                    <button id="bookmark-button" class="bookmark-button" style="color: #FFFFFF;">스크랩</button>
+                    <button id="bookmark-button" class="bookmark-button" style="color:#FFFFFF">스크랩</button>
                 </div>
             </div>
             <div class="divider"></div>
             <div class="mapsection">
-                <div class="map">지도 삽입 영역</div>
+                <div class="map" id="map" style="width:500px;height:400px;"></div>
             </div>
         </div>
 
