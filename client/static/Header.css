@@ -1,0 +1,32 @@
+header {
+  background-image: url("../assets/masthead.png");
+  background-size: cover;
+  height: 100vh;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.title {
+  display: inline-block;
+
+  padding-top: 18%;
+  padding-left: 12%;
+
+  font-family: "Prosto One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 6rem;
+  color: #fff;
+
+  border-bottom: 6px solid #fff;
+}
+
+.sub {
+  padding-top: 0.8rem;
+  padding-left: 12%;
+
+  color: #fff;
+  font-size: 1.2rem;
+}

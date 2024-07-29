@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+  font-family: "M PLUS 1p", "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/*nav*/
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 5px 15px;
+  font-size: 1.3rem;
+  min-height: 3rem;
+  position: relative;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+#pretrip {
+  font-family: "Prosto One", sans-serif;
+  color: #1e90ff;
+  margin-right: 30px;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0 15px;
+}
+
+.nav-menu li {
+  padding: 12px;
+}
+
+.nav-menu a:hover {
+  color: #73c2fb;
+  font-weight: bold;
+}
+
+.nav-toggle {
+  display: none;
+  position: absolute;
+  right: 15px;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+
+@media screen and (max-width: 700px) {
+  .navbar {
+    height: auto;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+
+  .navbar.open {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar.open .nav-menu {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .navbar.open .nav-menu li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .division {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+    font-size: 30px;
+  }
+}
+
+/*header*/
+header {
+  background-image: url("../assets/masthead.png");
+  background-size: cover;
+  object-fit: cover;
+  height: 100vh;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.title {
+  display: inline-block;
+
+  padding-top: 18%;
+  padding-left: 12%;
+
+  font-family: "Prosto One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 6rem;
+  color: #fff;
+
+  border-bottom: 6px solid #fff;
+}
+
+.sub {
+  padding-top: 0.8rem;
+  padding-left: 12%;
+
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+/*footer*/
+footer {
+  background-color: #fff;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.right {
+  padding: 10px;
+}
