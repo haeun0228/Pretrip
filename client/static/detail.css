@@ -110,14 +110,14 @@ html {
   justify-content: center;
   margin-bottom: 20px;
 }
-.star {
-  font-size: 2em;
-  color: #ffffff; /* 기본 별색 */
-  transition: color 0.3s;
-  cursor: pointer;
+.star, .reviewedstar{
+    font-size: 2em;
+    color: #FFFFFF; /* 기본 별색 */
+    transition: color 0.3s;
+    cursor: pointer;
 }
-.star.active {
-  color: #000000; /* 활성화된 별색 */
+.star.active, .reviewedstar.active {
+    color: #000000; /* 활성화된 별색 */
 }
 .submitsection {
   width: 100%;
