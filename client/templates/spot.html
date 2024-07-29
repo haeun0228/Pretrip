@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Spot</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../static/spot.css">
-    </head>
+<head>
+    <title>Spot</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='spot.css') }}">
+</head>
+<body>
+    <script src="../components/pagination.js"></script>
 
-    <body>
-        <script src="../components/pagination.js"></script>
-
-        <main class="spot_page">
-
+    <main class="spot_page">
         <nav class="navbar">
             <ul class="navlink">
                 <li><a href="index.html">Main</a></li>
@@ -31,6 +29,12 @@
                     <option value="daejeon">대전</option>
                     <option value="daegu">대구</option>
                 </select>
+                <select class="selecttype" id="selecttype">
+                    <option value="">유형</option>
+                    <option value="nearby">관광지</option>
+                    <option value="rating">숙소</option>
+                    <option value="rating">맛집</option>
+                </select>
                 <select class="filter" id="filter">
                     <option value="">정렬</option>
                     <option value="nearby">거리순</option>
@@ -45,89 +49,48 @@
         <div class="content">
             <div class="spotlist">
                 <div class="leftlist">
-                    <div class="spot" onclick="window.location.href='detail.html';">
+                    {% for spot in spots.items[:4] %}
+                    <div class="spot" onclick="window.location.href='{{ url_for('detail', id=spot.id) }}';">
                         <div class="spotinfo">
-                            <div class="name">경복궁</div>
-                            <div class="type">서울/관광지</div>
+                            <div class="name">{{ spot.name }}</div>
+                            <div class="type">{{ spot.location }}   {{spot.type}}</div>
                             <div class="rate">★★★★☆</div>
                         </div>
                         <img src="../static/image/gyungbok.jpeg" class="thumbnail">
                     </div>
-                    <div class="spot" onclick="window.location.href='detail.html';">
-                        <div class="spotinfo">
-                            <div class="name">경복궁</div>
-                            <div class="type">서울/관광지</div>
-                            <div class="rate">★★★★☆</div>
-                        </div>
-                        <img src="../static/image/gyungbok.jpeg" class="thumbnail">
-                    </div>
-                    <div class="spot" onclick="window.location.href='detail.html';">
-                        <div class="spotinfo">
-                            <div class="name">경복궁</div>
-                            <div class="type">서울/관광지</div>
-                            <div class="rate">★★★★☆</div>
-                        </div>
-                        <img src="../static/image/gyungbok.jpeg" class="thumbnail">
-                    </div>
-                    <div class="spot" onclick="window.location.href='detail.html';">
-                        <div class="spotinfo">
-                            <div class="name">경복궁</div>
-                            <div class="type">서울/관광지</div>
-                            <div class="rate">★★★★☆</div>
-                        </div>
-                        <img src="../static/image/gyungbok.jpeg" class="thumbnail">
-                    </div>
+                    {% endfor %}
                 </div>
                 <div class="divider"></div>
-                <div class="leftlist">
-                    <div class="spot" onclick="window.location.href='detail.html';">
+                <div class="rightlist">
+                    {% for spot in spots.items[4:8] %}
+                    <div class="spot" onclick="window.location.href='{{ url_for('detail', id=spot.id) }}';">
                         <div class="spotinfo">
-                            <div class="name">경복궁</div>
-                            <div class="type">서울/관광지</div>
+                            <div class="name">{{ spot.name }}</div>
+                            <div class="type">{{ spot.location }}/관광지</div>
                             <div class="rate">★★★★☆</div>
                         </div>
                         <img src="../static/image/gyungbok.jpeg" class="thumbnail">
                     </div>
-                    <div class="spot" onclick="window.location.href='detail.html';">
-                        <div class="spotinfo">
-                            <div class="name">경복궁</div>
-                            <div class="type">서울/관광지</div>
-                            <div class="rate">★★★★☆</div>
-                        </div>
-                        <img src="../static/image/gyungbok.jpeg" class="thumbnail">
-                    </div>
-                    <div class="spot" onclick="window.location.href='detail.html';">
-                        <div class="spotinfo">
-                            <div class="name">경복궁</div>
-                            <div class="type">서울/관광지</div>
-                            <div class="rate">★★★★☆</div>
-                        </div>
-                        <img src="../static/image/gyungbok.jpeg" class="thumbnail">
-                    </div>
-                    <div class="spot" onclick="window.location.href='detail.html';">
-                        <div class="spotinfo">
-                            <div class="name">경복궁</div>
-                            <div class="type">서울/관광지</div>
-                            <div class="rate">★★★★☆</div>
-                        </div>
-                        <img src="../static/image/gyungbok.jpeg" class="thumbnail">
-                    </div>
-                    
+                    {% endfor %}
                 </div>
             </div>
         </div>
 
         <div class="pagination">
-            <a href="#" class="prev">&ltri;</a>
-            <a href="#" class="page active" data-page="1">1</a>
-            <a href="#" class="page" data-page="2">2</a>
-            <a href="#" class="page" data-page="3">3</a>
-            <a href="#" class="page" data-page="4">4</a>
-            <a href="#" class="page" data-page="5">5</a>    
-            <a href="#" class="next">&rtri;</a>
+            {% if spots.has_prev %}
+            <a href="{{ url_for('index', page=spots.prev_num) }}" class="prev">&ltri;</a>
+            {% endif %}
+            {% for page in spots.iter_pages() %}
+                {% if page %}
+                    <a href="{{ url_for('index', page=page) }}" class="page {% if page == spots.page %}active{% endif %}" data-page="{{ page }}">{{ page }}</a>
+                {% else %}
+                    <span class="page">...</span>
+                {% endif %}
+            {% endfor %}
+            {% if spots.has_next %}
+            <a href="{{ url_for('index', page=spots.next_num) }}" class="next">&rtri;</a>
+            {% endif %}
         </div>
-
-        </main>
-
-    </body>
+    </main>
+</body>
 </html>
