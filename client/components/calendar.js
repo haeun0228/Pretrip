@@ -7,14 +7,49 @@ const schedules = [
   { date: "2024-07-04", spot: "전주" },
   { date: "2024-07-05", spot: "전주" },
   { date: "2024-07-06", spot: "전주" },
-  { date: "2024-07-16", spot: "다대포" },
-  { date: "2024-07-17", spot: "다대포" },
+  { date: "2024-07-16", spot: "대전" },
+  { date: "2024-07-17", spot: "대전" },
   { date: "2024-07-28", spot: "강릉" },
   { date: "2024-07-29", spot: "강릉" },
   { date: "2024-07-30", spot: "강릉" },
-  { date: "2024-08-10", spot: "대전" },
-  { date: "2024-08-11", spot: "대전" },
+  { date: "2024-08-09", spot: "부산" },
+  { date: "2024-08-10", spot: "부산" },
+  { date: "2024-08-11", spot: "부산" },
+  { date: "2024-08-12", spot: "부산" },
+  { date: "2024-08-13", spot: "부산" },
+  { date: "2024-10-10", spot: "제주도" },
+  { date: "2024-10-11", spot: "제주도" },
+  { date: "2024-10-12", spot: "제주도" },
+  { date: "2024-10-13", spot: "제주도" },
+  { date: "2024-10-14", spot: "제주도" },
+  { date: "2024-10-15", spot: "제주도" },
+  { date: "2024-10-16", spot: "제주도" },
+  { date: "2024-10-17", spot: "제주도" },
+  { date: "2024-10-18", spot: "제주도" },
+
 ];
+
+
+//여행지 데이터 받아오기
+// const schedules = [];
+// export async function getMySchedules() {
+//   const res = await fetch(``);
+//   if (!res.ok) {
+//     throw new Error('데이터를 불러오는데 실패했습니다.');
+//   }
+//   const data = await res.json();
+//   return data;
+// }
+
+// async function fetchMySchedules() {
+//   try {
+//     schedules = await getMySchedules();
+//   } catch (error) {
+//     throw new Error('데이터를 불러오는데 실패했습니다.');
+//   }
+// }
+
+
 
 //이전달
 function beforem() {
@@ -38,7 +73,7 @@ function nextm() {
   autoReload();
 }
 
-//오늘선택
+//오늘 선택
 function thisMonth() {
   today = new Date();
   autoReload();
