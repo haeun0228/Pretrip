@@ -13,13 +13,15 @@ CREATE TABLE `Location` (
 
 --- Create Review Table
 CREATE TABLE 'Review' (
-    'id' VARCHAR(191) NOT NULL,
-    'location_id' VARCHAR(191) NOT NULL,
-    'user_name' VARCHAR(191) NOT NULL,
-    'rating' TINYINT NOT NULL CHECK,
+    `id` VARCHAR(191) NOT NULL,
+    `location_id` VARCHAR(191) NOT NULL,
+    `user_name` VARCHAR(191) NOT NULL,
+    `rating` TINYINT NOT NULL CHECK,
+    `comment` VARCHAR(191) NOT NULL, 
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
 
+    PRIMARY KEY (`id`),
     FOREIGN KEY (`location_id`) REFERENCES `Location`(`id`) ON DELETE CASCADE
     CONSTRAINT `rating_check` CHECK (rating BETWEEN 1 AND 5)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

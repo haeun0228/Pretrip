@@ -20,6 +20,8 @@ model User {
   nickname String
   scraps   Scrap[]
   events   Event[]
+
+  reviews Review[] @relation("UserReviews")
 }
 
 model Location {
@@ -32,18 +34,21 @@ model Location {
   scraps    Scrap[]
   events    EventLocation[]
 
-  reviews Review[] @relation("LocationReviews")
+  reviews       Review[] @relation("LocationReviews")
+  averageRating Float?   @default(0)
 }
 
 model Review {
   id         Int      @id @default(autoincrement())
   locationId String
+  userId     String
   userName   String
   rating     Int //@check(rating >= 1 && rating <= 5)
-  comment    String?
+  comment    String
   createdAt  DateTime @default(now())
 
   location Location @relation("LocationReviews", fields: [locationId], references: [id])
+  user     User     @relation("UserReviews", fields: [userId], references: [kakaoId])
 }
 
 model Scrap {
